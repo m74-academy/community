@@ -1,0 +1,66 @@
+# Get course updates without losing your work
+
+The course changes while you take it. Get each update in four steps: **commit → pull → sync → push**. Run them in the module folder.
+
+## 1. Commit your work
+
+```console
+git status
+git add src/chapter_01/lesson_02.py
+git commit -m "Solve lesson 1.2"
+```
+
+Never pull on top of changes you haven't committed.
+
+## 2. Pull from the course
+
+```console
+git pull --no-rebase --no-edit upstream main
+```
+
+| Part | Does |
+|---|---|
+| `upstream main` | takes the course's `main` branch |
+| `--no-rebase` | merges it with your commits; without it, Git stops with "Need to specify how to reconcile divergent branches" |
+| `--no-edit` | keeps Git's merge message, so no text editor opens |
+
+Your commits and the course's commits are both kept:
+
+```console
+git log --oneline --graph -5
+```
+
+## 3. Sync, 4. Push
+
+```console
+uv sync --locked
+git push
+```
+
+An update can change the project's packages, so sync after every pull.
+
+## When there's a conflict
+
+```text
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+You and the course changed the same lines. Nothing is lost.
+
+1. Open the file. VS Code shows both versions.
+2. Keep your work **and** the course's change, then save.
+3. Finish the update:
+
+```console
+git add README.md
+git commit --no-edit
+uv sync --locked
+git push
+```
+
+Never reset or delete your work to make an update apply. Stuck? Ask in [Discussions](https://github.com/orgs/m74-academy/discussions).
+
+## Keep your work
+
+Your fork lasts while you have access to the course. Before that access ends, push your work to a repository of your own.
