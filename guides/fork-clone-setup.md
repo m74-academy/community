@@ -70,7 +70,13 @@ It downloads Python if needed and creates `.venv/`. `--locked` stops without cha
 uv run academy --help
 ```
 
-The help for the `academy` command appears: setup works.
+The help for the `academy` command appears. Then check the whole setup:
+
+```console
+uv run academy health
+```
+
+Every required check prints `OK`, and the last line says `Setup looks good.` A `FAIL` line comes with a fix. `WARN` and `INFO` lines are advice. The `health` command is available from Module 1 version 0.7.5.
 
 ## 6. Open and read the course
 
@@ -84,7 +90,7 @@ You can also read the Markdown files directly in VS Code or on GitHub.
 - [ ] Fork `YOUR-USERNAME/module-1` exists
 - [ ] Cloned, with `origin` and `upstream` remotes
 - [ ] `uv sync --locked` finished
-- [ ] `uv run academy --help` prints the help
+- [ ] `uv run academy health` ends with `Setup looks good.`
 - [ ] Folder open in VS Code with the `.venv` interpreter
 
 Commit your work as you go and `git push` it to your fork.
