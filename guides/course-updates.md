@@ -61,6 +61,18 @@ git push
 
 Never reset or delete your work to make an update apply. Stuck? Ask in [Discussions](https://github.com/orgs/m74-academy/discussions).
 
+## The academy command updates itself
+
+`academy` is installed once on your computer, not in each module, so course updates
+do not change it. Run `academy update` now and then: it upgrades the command and
+tells you when the course has a newer release.
+
+**Moving from `uv run academy`:** Module 1 before 0.8.0 and Module 2 before 0.2.0
+had the command inside the project. [Install the `academy`
+command](install-uv-and-git.md#install-the-academy-command) once, before or after
+pulling those releases. After the pull, `uv sync --locked` removes the old copy; from then on type `academy …`
+instead of `uv run academy …`.
+
 ## Keep your work
 
 Your fork lasts while you have access to the course. Before that access ends, push your work to a repository of your own.

@@ -1,12 +1,13 @@
-# Install uv and Git
+# Install uv, Git, and the academy command
 
-You need three things before the first lesson:
+You need four things before the first lesson:
 
 | Tool | Why |
 |---|---|
 | uv | Runs Python and every course command |
 | Git | Gets the course and its updates, and saves your work |
 | GitHub account | Holds your copy of the course, your reviews, and your capstone handoff |
+| `academy` command | Checks your lessons, opens the course, and checks your setup in every module |
 
 You do **not** need to install Python. uv downloads the version each module needs.
 
@@ -65,13 +66,26 @@ git config --global user.email "you@example.com"
 
 Use your own name and the email of your GitHub account. Every commit records them.
 
+## Install the academy command
+
+Once per computer, after uv and Git:
+
+```console
+uv tool install git+https://github.com/m74-academy/academy-cli
+```
+
+If uv says the command folder is not on your `PATH`, run `uv tool update-shell`,
+then close the terminal and open a new one. The same `academy` command works in
+every module; `academy update` keeps it current.
+
 ## Check
 
-In a **new** terminal, both commands print a version:
+In a **new** terminal, all three commands print a version:
 
 ```console
 uv --version
 git --version
+academy --version
 ```
 
 - On Windows, run every course command in **PowerShell**.
