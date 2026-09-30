@@ -24,7 +24,9 @@ Some lessons are written, not coded. `academy test 1 1` then tells you which Mar
 academy test 1 2
 ```
 
-On a new lesson the checks fail. That means the lesson is ready to solve, not that something is broken. A setup problem looks different: `command not found` or `PROJECT ERROR`.
+On a new lesson the checks fail, usually with `assert None == …`: the starter function has `pass` instead of a body, so it returns `None`. That means the lesson is ready to solve, not that something is broken. A setup problem looks different: `command not found` or `PROJECT ERROR`.
+
+`academy test` stops at the first failing check, so you fix one thing at a time; the dots or `PASSED` lines before it are the checks that already pass. Add `--all` to see every failing check.
 
 ## 3. Edit and save
 
@@ -61,6 +63,8 @@ E   AssertionError: assert 'SH010_comp_v####.exr' == 'SH010_comp_v002.####.exr'
 | `FAILED` | The check ran: your code returned the wrong value or raised an exception | the `E` lines: the two values, or the exception, file, and line |
 | `ERROR` | The check could not run: its file failed to import or its setup failed | the last `E` line: exception, file, and line |
 
+If your file has a syntax error, no check runs: **YOUR FILE DOES NOT LOAD** shows the line to fix.
+
 The checks include cases the lesson never showed, so a hardcoded answer won't pass. Change your code, never the checks.
 
 ## 5. When it passes
@@ -82,7 +86,8 @@ git push
 
 | Command | Checks |
 |---|---|
-| `academy test 1 2` | one lesson |
+| `academy test 1 2` | one lesson, stopping at the first failing check |
+| `academy test 1 2 --all` | one lesson, every failing check |
 | `academy test 1` | a whole chapter |
 | `uv run pytest tests/chapter_01/test_lesson_02.py -v` | one test file, with every case listed |
 
