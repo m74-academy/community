@@ -1,12 +1,13 @@
-# Install uv, Git, and the academy command
+# Install uv, Git, GitHub CLI, and the academy command
 
-You need four things before the first lesson:
+You need five things before the first lesson:
 
 | Tool | Why |
 |---|---|
 | uv | Runs Python and every course command |
 | Git | Gets the course and its updates, and saves your work |
 | GitHub account | Holds your copy of the course, your reviews, and your capstone handoff |
+| GitHub CLI (`gh`) | Connects your terminal to GitHub and handles course GitHub workflows |
 | `academy` command | Checks your lessons, opens the course, and checks your setup in every module |
 
 You do **not** need to install Python. uv downloads the version each module needs.
@@ -64,7 +65,47 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-Use your own name and the email of your GitHub account. Every commit records them.
+Use your own name and the email associated with your GitHub account. Every commit records them.
+
+## Install GitHub CLI
+
+GitHub CLI gives you the `gh` command. We use it to work with GitHub directly from the terminal.
+
+Follow the [official GitHub CLI installation instructions](https://cli.github.com/).
+
+macOS with Homebrew:
+
+```console
+brew install gh
+```
+
+Windows with WinGet:
+
+```console
+winget install --id GitHub.cli
+```
+
+On Linux, follow the instructions for your distribution on the official page.
+
+Check:
+
+```console
+gh --version
+```
+
+Then connect it to your GitHub account:
+
+```console
+gh auth login
+```
+
+Choose **GitHub.com** and follow the prompts. When asked which protocol to use for Git operations, choose **HTTPS** unless your instructor tells you otherwise.
+
+Check that authentication worked:
+
+```console
+gh auth status
+```
 
 ## Install the academy command
 
@@ -74,19 +115,29 @@ Once per computer, after uv and Git:
 uv tool install git+https://github.com/m74-academy/academy-cli
 ```
 
-If uv says the command folder is not on your `PATH`, run `uv tool update-shell`,
-then close the terminal and open a new one. The same `academy` command works in
-every module; `academy update` keeps it current.
+If uv says the command folder is not on your `PATH`, run:
+
+```console
+uv tool update-shell
+```
+
+Then close the terminal and open a new one.
+
+The same `academy` command works in every module; `academy update` keeps it current.
 
 ## Check
 
-In a **new** terminal, all three commands print a version:
+In a **new** terminal, these commands should all work:
 
 ```console
 uv --version
 git --version
+gh --version
+gh auth status
 academy --version
 ```
+
+If they do, your computer is ready for the course.
 
 - On Windows, run every course command in **PowerShell**.
 - Installation blocked on a school or work computer? Ask your instructor or IT **before** the first lesson.
