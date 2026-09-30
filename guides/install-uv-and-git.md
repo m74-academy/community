@@ -117,4 +117,6 @@ gh auth status
 academy --version
 ```
 
+`academy --help` lists every command with examples; `academy` alone shows the same.
+
 Your computer is ready. Next: open [Module 1](https://github.com/m74-academy/module-1) and follow its **Start here**.
