@@ -1,54 +1,62 @@
-# Fork, clone, and set up a module
+# Fork, clone, and set up a module, step by step
 
-Each module is a private repository in this organization. You work in your own copy of it. The examples use `module-1`; for another module, replace `module-1` with its name.
+Each module README starts with one command that does all of this:
+
+```console
+gh repo fork m74-academy/module-1 --clone
+```
+
+This guide explains what it does, and how to do the same by hand. The examples use `module-1`; for another module, replace `module-1` with its name.
 
 ```text
 m74-academy/module-1       the course      → remote: upstream
         │ Fork
         ▼
 YOUR-USERNAME/module-1     your fork       → remote: origin
-        │ git clone
+        │ Clone
         ▼
 module-1/                  on your computer
 ```
 
-Before you start, accept the course invitation from your email or GitHub notifications, and [install uv, Git, and the `academy` command](install-uv-and-git.md).
+- **Fork:** your own copy of the course on GitHub. You push your work there. It is private, and it lasts while you have access to the course.
+- **Clone:** that copy downloaded to your computer, in a `module-1` folder.
+- **Remotes:** `origin` is your fork; `upstream` is the course. `academy update` gets course updates from `upstream`.
 
-## 1. Fork the course
+You need [your computer set up](install-uv-and-git.md) first, with `gh auth login` done.
 
-1. Open the module repository, for example [m74-academy/module-1](https://github.com/m74-academy/module-1).
-2. Click **Fork**, keep the defaults, and click **Create fork**.
+## By hand, in the browser
 
-The result is `YOUR-USERNAME/module-1`. Your fork is private; classmates can't see it.
+1. Open the module repository, for example [m74-academy/module-1](https://github.com/m74-academy/module-1), and click **Fork**, then **Create fork**. The result is `YOUR-USERNAME/module-1`.
+2. Clone your fork. With GitHub CLI this also adds `upstream`:
 
-## 2. Clone your fork
+   ```console
+   gh repo clone YOUR-USERNAME/module-1
+   ```
 
-On **your fork**, choose **Code → HTTPS** and copy the address. It contains your username, not `m74-academy`.
+   With Git alone, clone and add `upstream` yourself:
 
-```console
-git clone https://github.com/YOUR-USERNAME/module-1.git
-cd module-1
-```
+   ```console
+   git clone https://github.com/YOUR-USERNAME/module-1.git
+   cd module-1
+   git remote add upstream https://github.com/m74-academy/module-1.git
+   ```
 
-## 3. Connect it to the course
+3. Check the remotes from inside the folder:
 
-```console
-git remote add upstream https://github.com/m74-academy/module-1.git
-git remote -v
-```
+   ```console
+   git remote -v
+   ```
 
-```text
-origin    https://github.com/YOUR-USERNAME/module-1.git (fetch)
-origin    https://github.com/YOUR-USERNAME/module-1.git (push)
-upstream  https://github.com/m74-academy/module-1.git (fetch)
-upstream  https://github.com/m74-academy/module-1.git (push)
-```
+   ```text
+   origin    https://github.com/YOUR-USERNAME/module-1.git (fetch)
+   origin    https://github.com/YOUR-USERNAME/module-1.git (push)
+   upstream  https://github.com/m74-academy/module-1.git (fetch)
+   upstream  https://github.com/m74-academy/module-1.git (push)
+   ```
 
-Push your work to **origin**. Get course updates from **upstream**.
+## Set up the project
 
-**Shortcut:** with the [GitHub CLI](https://cli.github.com/) installed and signed in, `gh repo fork m74-academy/module-1 --clone` does steps 1 to 3 in one command. Then `cd module-1`.
-
-## 4. Set up the project
+In the module folder:
 
 ```console
 uv sync --locked
@@ -64,35 +72,12 @@ uv reads three files that come with the module:
 
 It downloads Python if needed and creates `.venv/`. `--locked` stops without changing anything if the lock file doesn't match.
 
-## 5. Check it works
-
-```console
-academy --help
-```
-
-The help for the `academy` command appears. Then check the whole setup:
+Then check everything:
 
 ```console
 academy health
 ```
 
-Every required check prints `OK`, and the last line says `Setup looks good.` A `FAIL` line comes with a fix. `WARN` and `INFO` lines are advice. `academy health` needs Module 1 0.8.0 or Module 2 0.2.0 or later.
+Every required check prints `OK`, and the last line says `Setup looks good.` A `FAIL` line comes with a fix. `WARN` and `INFO` lines are advice.
 
-## 6. Open and read the course
-
-1. Open the module folder in VS Code; see [VS Code or the terminal?](vscode-and-terminal.md).
-2. Run `academy docs`. The course opens in your browser; the first run downloads its reading tools. If no browser opens, copy the `http://localhost` address from the terminal.
-
-You can also read the Markdown files directly in VS Code or on GitHub.
-
-## Checklist
-
-- [ ] Fork `YOUR-USERNAME/module-1` exists
-- [ ] Cloned, with `origin` and `upstream` remotes
-- [ ] `uv sync --locked` finished
-- [ ] `academy health` ends with `Setup looks good.`
-- [ ] Folder open in VS Code with the `.venv` interpreter
-
-Commit your work as you go and `git push` it to your fork.
-
-Next: [Read, edit, and check a lesson](lesson-loop.md).
+Back to the module README's **Start here** for the next step.

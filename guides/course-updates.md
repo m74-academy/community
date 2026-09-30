@@ -1,59 +1,40 @@
 # Get course updates without losing your work
 
-The course changes while you take it. Get each update in four steps: **commit → pull → sync → push**. Run them in the module folder.
-
-## 1. Commit your work
+The course changes while you take it. In the module folder, commit your work, then run one command:
 
 ```console
-git status
-git add src/chapter_01/lesson_02.py
-git commit -m "Solve lesson 1.2"
+git add -A
+git commit -m "Save my work"
+academy update
 ```
 
-Never pull on top of changes you haven't committed.
+`academy update` upgrades the `academy` command, and when the course has a newer release it:
 
-## 2. Pull from the course
+1. gets it from the course (`git pull --no-rebase --no-edit upstream main`), keeping your commits and the course's;
+2. updates the project's packages (`uv sync --locked`).
 
-```console
-git pull --no-rebase --no-edit upstream main
-```
-
-| Part | Does |
-|---|---|
-| `upstream main` | takes the course's `main` branch |
-| `--no-rebase` | merges it with your commits; without it, Git stops with "Need to specify how to reconcile divergent branches" |
-| `--no-edit` | keeps Git's merge message, so no text editor opens |
-
-Your commits and the course's commits are both kept:
+Then save the result to your fork:
 
 ```console
-git log --oneline --graph -5
-```
-
-## 3. Sync, 4. Push
-
-```console
-uv sync --locked
 git push
 ```
 
-An update can change the project's packages, so sync after every pull.
+`academy update --check` only reports what is available and changes nothing. The module's `CHANGELOG.md` lists what each release changes.
 
-## When there's a conflict
+## When it stops
 
-```text
-CONFLICT (content): Merge conflict in README.md
-Automatic merge failed; fix conflicts and then commit the result.
-```
+`academy update` never commits, discards, or pushes your work for you. It stops in two cases.
 
-You and the course changed the same lines. Nothing is lost.
+**COMMIT FIRST:** you have changes you haven't committed. Commit them, as above, and run `academy update` again.
 
-1. Open the file. VS Code shows both versions.
+**COURSE UPDATE STOPPED** with a list of files: you and the course changed the same lines. Nothing is lost.
+
+1. Open each listed file. VS Code shows both versions.
 2. Keep your work **and** the course's change, then save.
 3. Finish the update:
 
 ```console
-git add README.md
+git add -A
 git commit --no-edit
 uv sync --locked
 git push
@@ -61,17 +42,17 @@ git push
 
 Never reset or delete your work to make an update apply. Stuck? Ask in [Discussions](https://github.com/orgs/m74-academy/discussions).
 
-## The academy command updates itself
+## Moving from `uv run academy`
 
-`academy` is installed once on your computer, not in each module, so course updates
-do not change it. Run `academy update` now and then: it upgrades the command and
-tells you when the course has a newer release.
+Module 1 before 0.8.0 and Module 2 before 0.2.0 had the command inside the project, so `academy update` isn't there yet. [Install the `academy` command](install-uv-and-git.md#5-install-the-academy-command) once, then get that first update by hand:
 
-**Moving from `uv run academy`:** Module 1 before 0.8.0 and Module 2 before 0.2.0
-had the command inside the project. [Install the `academy`
-command](install-uv-and-git.md#install-the-academy-command) once, before or after
-pulling those releases. After the pull, `uv sync --locked` removes the old copy; from then on type `academy …`
-instead of `uv run academy …`.
+```console
+git pull --no-rebase --no-edit upstream main
+uv sync --locked
+git push
+```
+
+`uv sync --locked` removes the old copy; from then on type `academy …` instead of `uv run academy …`.
 
 ## Keep your work
 

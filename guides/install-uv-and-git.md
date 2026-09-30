@@ -1,145 +1,120 @@
-# Install uv, Git, GitHub CLI, and the academy command
+# Set up your computer
 
-You need five things before the first lesson:
+Do this once per computer, before your first lesson. It takes about 20 minutes.
 
 | Tool | Why |
 |---|---|
-| uv | Runs Python and every course command |
+| VS Code | Where you read, write code, and type commands |
+| uv | Runs Python and every course command; you do **not** install Python yourself |
 | Git | Gets the course and its updates, and saves your work |
-| GitHub account | Holds your copy of the course, your reviews, and your capstone handoff |
-| GitHub CLI (`gh`) | Connects your terminal to GitHub and handles course GitHub workflows |
-| `academy` command | Checks your lessons, opens the course, and checks your setup in every module |
+| GitHub CLI (`gh`) | Signs your computer in to GitHub, so Git can reach the private course |
+| `academy` command | Checks your lessons, opens the course, and checks your setup |
 
-You do **not** need to install Python. uv downloads the version each module needs.
+You also need a GitHub account, the one your instructor invited.
 
-A code editor is also useful; see [VS Code or the terminal?](vscode-and-terminal.md).
+On a school or work computer where installing is blocked, ask your instructor or IT **before** the first lesson.
 
-## Install uv
+## 1. Install VS Code
 
-Use the **standalone installer** from the [official uv page](https://docs.astral.sh/uv/getting-started/installation/). It needs no Python and no admin rights.
+Download it from [code.visualstudio.com](https://code.visualstudio.com/) and install it. Open it, go to the Extensions view, and install **Python** (by Microsoft).
 
-macOS and Linux, in Terminal:
+Now open a terminal inside VS Code: **Terminal → New Terminal**. Type every command below there. On Windows it must say **PowerShell**; choose it from the arrow next to **+** if not.
+
+## 2. Install uv
+
+macOS and Linux:
 
 ```console
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Windows, in PowerShell:
+Windows:
 
 ```console
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-If the official page shows a different command, use that one.
+These come from the [official uv page](https://docs.astral.sh/uv/getting-started/installation/); if it shows a different command, use that one.
 
-**Close the terminal and open a new one**, then check:
+**Close the terminal (trash icon) and open a new one**, then check:
 
 ```console
 uv --version
 ```
 
-It prints a version number. `command not found` usually means you are still in the old window.
+It prints a version number. `command not found` means the terminal is still the old one.
 
-## Install Git
-
-Follow the [official Git page](https://git-scm.com/install/):
+## 3. Install Git
 
 | System | How |
 |---|---|
-| macOS | Run `git --version` and accept the offer to install the command line tools |
-| Windows | Run the Git for Windows installer and keep the defaults |
+| macOS | Run `git --version` and click **Install** when macOS offers the command line developer tools |
+| Windows | Download [Git for Windows](https://git-scm.com/install/) and run the installer with its default choices |
 | Linux | Use your package manager, for example `sudo apt install git` on Ubuntu |
 
-Check in a new terminal:
+Open a new terminal and check:
 
 ```console
 git --version
 ```
 
-## Tell Git who you are
-
-Once per computer, before your first commit:
+Then tell Git who you are. Use your name and the email of your GitHub account; every commit records them:
 
 ```console
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-Use your own name and the email associated with your GitHub account. Every commit records them.
+## 4. Install GitHub CLI and sign in
 
-## Install GitHub CLI
+The course repositories are private, so Git needs your GitHub sign-in. GitHub CLI sets that up.
 
-GitHub CLI gives you the `gh` command. We use it to work with GitHub directly from the terminal.
+| System | How |
+|---|---|
+| macOS | Download the **macOS installer** from [cli.github.com](https://cli.github.com/) and open it. With [Homebrew](https://brew.sh/) you can instead run `brew install gh` |
+| Windows | Run `winget install --id GitHub.cli` in the terminal, or download the **Windows installer** from [cli.github.com](https://cli.github.com/) |
+| Linux | Follow the instructions for your distribution on [cli.github.com](https://cli.github.com/) |
 
-Follow the [official GitHub CLI installation instructions](https://cli.github.com/).
-
-macOS with Homebrew:
-
-```console
-brew install gh
-```
-
-Windows with WinGet:
-
-```console
-winget install --id GitHub.cli
-```
-
-On Linux, follow the instructions for your distribution on the official page.
-
-Check:
-
-```console
-gh --version
-```
-
-Then connect it to your GitHub account:
+Open a new terminal, then sign in:
 
 ```console
 gh auth login
 ```
 
-Choose **GitHub.com** and follow the prompts. When asked which protocol to use for Git operations, choose **HTTPS** unless your instructor tells you otherwise.
+Answer the questions:
 
-Check that authentication worked:
+1. Where do you use GitHub? **GitHub.com**
+2. Preferred protocol? **HTTPS**
+3. Authenticate Git with your GitHub credentials? **Yes**
+4. How to authenticate? **Login with a web browser**, then paste the code it shows into the page that opens.
+
+Check:
 
 ```console
 gh auth status
 ```
 
-## Install the academy command
+It says you are logged in to github.com.
 
-Once per computer, after uv and Git:
+## 5. Install the academy command
 
 ```console
 uv tool install git+https://github.com/m74-academy/academy-cli
 ```
 
-If uv says the command folder is not on your `PATH`, run:
+If uv says its tool folder is not on your `PATH`, run `uv tool update-shell`, then open a new terminal.
 
-```console
-uv tool update-shell
-```
-
-Then close the terminal and open a new one.
-
-The same `academy` command works in every module; `academy update` keeps it current.
+The same `academy` command works in every module; `academy update` keeps it and the course current.
 
 ## Check
 
-In a **new** terminal, these commands should all work:
+In a **new** terminal, each of these prints a version or a status, not an error:
 
 ```console
 uv --version
 git --version
-gh --version
 gh auth status
 academy --version
 ```
 
-If they do, your computer is ready for the course.
-
-- On Windows, run every course command in **PowerShell**.
-- Installation blocked on a school or work computer? Ask your instructor or IT **before** the first lesson.
-
-Next: [Fork, clone, and set up a module](fork-clone-setup.md).
+Your computer is ready. Next: open [Module 1](https://github.com/m74-academy/module-1) and follow its **Start here**.

@@ -8,7 +8,9 @@ read the lesson  →  edit src/chapter_NN/lesson_NN.py  →  save
       └──────  read the result  ←  academy test CHAPTER LESSON
 ```
 
-The module's practice guide lists every lesson, the file to edit, and its command. The examples below use Module 1, Chapter 1, Lesson 2.
+Run every command in the module folder, in the VS Code terminal. `academy` not found? [Set up your computer](install-uv-and-git.md) first. No module folder yet? Follow the module README's **Start here**.
+
+Each lesson page names the file to edit and its command. The examples below use Module 1, Chapter 1, Lesson 2.
 
 ## 1. Read the lesson
 
@@ -86,4 +88,4 @@ git push
 
 Read the test files to see the exact inputs.
 
-Next: [Get course updates](course-updates.md).
+When the course changes, `academy update` brings the changes in: [Get course updates](course-updates.md).
