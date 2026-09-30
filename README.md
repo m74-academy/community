@@ -4,7 +4,7 @@ This repository hosts the organization's [Discussions](https://github.com/orgs/m
 
 ## Guides
 
-1. [Install uv and Git](guides/install-uv-and-git.md)
+1. [Install uv, Git, and the academy command](guides/install-uv-and-git.md)
 2. [VS Code or the terminal?](guides/vscode-and-terminal.md)
 3. [Fork, clone, and set up a module](guides/fork-clone-setup.md)
 4. [Read, edit, and check a lesson](guides/lesson-loop.md)

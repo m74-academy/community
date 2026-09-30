@@ -5,21 +5,21 @@ Every coding lesson follows the same loop:
 ```text
 read the lesson  →  edit src/chapter_NN/lesson_NN.py  →  save
       ↑                                                  ↓
-      └──────  read the result  ←  uv run academy test CHAPTER LESSON
+      └──────  read the result  ←  academy test CHAPTER LESSON
 ```
 
 The module's practice guide lists every lesson, the file to edit, and its command. The examples below use Module 1, Chapter 1, Lesson 2.
 
 ## 1. Read the lesson
 
-Open it with `uv run academy docs`, in VS Code, or on GitHub. Read the worked example before you edit anything.
+Open it with `academy docs`, in VS Code, or on GitHub. Read the worked example before you edit anything.
 
-Some lessons are written, not coded. `uv run academy test 1 1` then tells you which Markdown file to write in, such as `answers/chapter_01/lesson_01.md`. Use the lesson's self-check; there is no automated grade.
+Some lessons are written, not coded. `academy test 1 1` then tells you which Markdown file to write in, such as `answers/chapter_01/lesson_01.md`. Use the lesson's self-check; there is no automated grade.
 
 ## 2. Run the checks first
 
 ```console
-uv run academy test 1 2
+academy test 1 2
 ```
 
 On a new lesson the checks fail. That means the lesson is ready to solve, not that something is broken. A setup problem looks different: `command not found` or `PROJECT ERROR`.
@@ -39,7 +39,7 @@ Keep the signature and type hints. Replace `pass` with your code and save. There
 ## 4. Check again and read the result
 
 ```console
-uv run academy test 1 2
+academy test 1 2
 ```
 
 Read a failure from top to bottom:
@@ -56,8 +56,8 @@ E   AssertionError: assert 'SH010_comp_v####.exr' == 'SH010_comp_v002.####.exr'
 
 | Word | Means | Look at |
 |---|---|---|
-| `FAILED` | Your code ran and returned the wrong value | the difference between the two values |
-| `ERROR` | Your code crashed before it could be checked | the last `E` line: exception, file, and line |
+| `FAILED` | The check ran: your code returned the wrong value or raised an exception | the `E` lines: the two values, or the exception, file, and line |
+| `ERROR` | The check could not run: its file failed to import or its setup failed | the last `E` line: exception, file, and line |
 
 The checks include cases the lesson never showed, so a hardcoded answer won't pass. Change your code, never the checks.
 
@@ -80,8 +80,8 @@ git push
 
 | Command | Checks |
 |---|---|
-| `uv run academy test 1 2` | one lesson |
-| `uv run academy test 1` | a whole chapter |
+| `academy test 1 2` | one lesson |
+| `academy test 1` | a whole chapter |
 | `uv run pytest tests/chapter_01/test_lesson_02.py -v` | one test file, with every case listed |
 
 Read the test files to see the exact inputs.

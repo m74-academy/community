@@ -4,7 +4,7 @@ Both. You **edit** files in an editor and **run** course commands in a terminal.
 
 | | Editor | Terminal |
 |---|---|---|
-| You use it to | read lessons, write code, resolve merge conflicts | run `uv`, `git`, and `uv run academy` |
+| You use it to | read lessons, write code, resolve merge conflicts | run `uv`, `git`, and `academy` |
 | Recommended | [VS Code](https://code.visualstudio.com/) with the Python extension | the terminal built into VS Code, or your system's own |
 
 Any Python editor works. The course pages and commands assume VS Code, so questions about it are easier to answer.
@@ -30,19 +30,19 @@ pwd
 
 The last part of the path is the module folder, for example `module-1`. If not, move there with `cd`.
 
-Run course commands through uv:
+Run course commands in the terminal:
 
 ```console
-uv run academy test 1 2
+academy test 1 2
 ```
 
-`uv run` uses the project's Python and packages for you. You never activate an environment or use `pip`.
+`academy` runs your checks with the project's Python and packages through uv. You never activate an environment or use `pip`.
 
 On Windows, the built-in terminal must be **PowerShell**. Choose it from the arrow next to **+** in the terminal panel if it opened something else.
 
 ## Two terminals
 
-`uv run academy docs` keeps running while you read the course in the browser. Leave that terminal open and click **+** in the terminal panel for a second one in the same folder. Use the second one for lesson checks and Git. **Ctrl+C** stops the preview.
+`academy docs` keeps running while you read the course in the browser. Leave that terminal open and click **+** in the terminal panel for a second one in the same folder. Use the second one for lesson checks and Git. **Ctrl+C** stops the preview.
 
 ## Common problems
 

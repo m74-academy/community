@@ -12,7 +12,7 @@ YOUR-USERNAME/module-1     your fork       → remote: origin
 module-1/                  on your computer
 ```
 
-Before you start, accept the course invitation from your email or GitHub notifications, and [install uv and Git](install-uv-and-git.md).
+Before you start, accept the course invitation from your email or GitHub notifications, and [install uv, Git, and the `academy` command](install-uv-and-git.md).
 
 ## 1. Fork the course
 
@@ -67,21 +67,21 @@ It downloads Python if needed and creates `.venv/`. `--locked` stops without cha
 ## 5. Check it works
 
 ```console
-uv run academy --help
+academy --help
 ```
 
 The help for the `academy` command appears. Then check the whole setup:
 
 ```console
-uv run academy health
+academy health
 ```
 
-Every required check prints `OK`, and the last line says `Setup looks good.` A `FAIL` line comes with a fix. `WARN` and `INFO` lines are advice. The `health` command is available from Module 1 version 0.7.5.
+Every required check prints `OK`, and the last line says `Setup looks good.` A `FAIL` line comes with a fix. `WARN` and `INFO` lines are advice. `academy health` needs Module 1 0.8.0 or Module 2 0.2.0 or later.
 
 ## 6. Open and read the course
 
 1. Open the module folder in VS Code; see [VS Code or the terminal?](vscode-and-terminal.md).
-2. Run `uv run academy docs`. The course opens in your browser; the first run downloads its reading tools. If no browser opens, copy the `http://localhost` address from the terminal.
+2. Run `academy docs`. The course opens in your browser; the first run downloads its reading tools. If no browser opens, copy the `http://localhost` address from the terminal.
 
 You can also read the Markdown files directly in VS Code or on GitHub.
 
@@ -90,7 +90,7 @@ You can also read the Markdown files directly in VS Code or on GitHub.
 - [ ] Fork `YOUR-USERNAME/module-1` exists
 - [ ] Cloned, with `origin` and `upstream` remotes
 - [ ] `uv sync --locked` finished
-- [ ] `uv run academy health` ends with `Setup looks good.`
+- [ ] `academy health` ends with `Setup looks good.`
 - [ ] Folder open in VS Code with the `.venv` interpreter
 
 Commit your work as you go and `git push` it to your fork.
