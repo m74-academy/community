@@ -1,116 +1,85 @@
 # What a pipeline TD does
 
-This page is for programmers who are thinking about working as a pipeline TD. It describes the job, the roles around it, and how people get into it, and it includes one pipeline TD's own account. If the word *pipeline* is new to you, read [What a VFX pipeline is](vfx-pipeline.md) first.
+At Virgil's studio, colleagues asked for a Gantt chart: a timeline showing when work is scheduled. Their tracking-system vendor had suggested building a custom one in a web framework.
 
-A **pipeline TD** (technical director) writes and supports the tools that move work through a VFX studio. Pipeline TDs work between artists and software engineers. They stay close enough to the artists to sit next to one and fix a broken shot, and they are technical enough to design the tools that keep it from breaking again.
+Virgil looked into what they needed to schedule. The goal was to assign people's working hours across weekends, holidays, and overtime. An algorithm that assigns the dates, shown in a plain table, met that need.
 
-The job exists to save artists' time. Every minute an artist spends looking for files, fixing names, or waiting for a broken tool is a minute not spent on the shot. A good pipeline tool is one that artists barely notice.
+Virgil is a **pipeline TD** (technical director), and the author of this course. His example raises a useful question for a programmer considering visual effects (VFX): what changes when you become responsible for helping artists get their work done?
 
-## A request, from the inside
+## A request is the beginning of the problem
 
-Here is a real example from the author of this course, who works as a pipeline TD.
+The Gantt chart request named a possible solution. Understanding the scheduling need gave Virgil a way to judge whether that solution was necessary.
 
-Colleagues at the studio asked for a Gantt chart. The vendor of their tracking system had suggested building a custom one in a web framework, so that became the request. But the goal was never a chart. The real need was simpler: a clear way to assign people's working hours across weekends, holidays, and overtime. A small algorithm that assigns the dates, shown in a plain table, did exactly that.
+```mermaid
+flowchart TD
+    request["Request: a custom Gantt chart"] --> need["Need: assign hours around weekends, holidays, and overtime"]
+    need --> solution["Solution: date allocation shown in a table"]
+```
 
-That is a large part of the job: finding the need behind the request before writing any code.
+*In this case, understanding the need led to a smaller tool. The example comes from Virgil's own studio experience.*
 
-## The work
+The same responsibility applies when an artist reports that a shot will not load or a publish fails. The TD needs to understand the work the person is trying to do, investigate the problem, and decide what will help. Writing a feature is one possible result of that investigation.
 
-Most pipeline work is about how files are saved, loaded, published, and handed between departments. It is rarely about the images themselves. Day to day, that means:
+In Virgil's experience, artists and supervisors may not have the words to describe a technical problem or see how the pipeline works inside. His advice is to take their point of view seriously, even when you think there is a better approach. They know parts of the work that you need to understand.
 
-- **Building tools.** Scripts, tools, and plugins that solve artists' problems and speed up their work. Many of them run inside the artists' applications, such as Maya (3D), Houdini (effects), and Nuke (compositing).
-- **Supporting artists.** Solving problems directly, at the artist's desk or through a ticket system, and finding out why a shot doesn't load, render, or publish.
-- **Connecting people.** Turning an artist's complaint into a clear problem for the software developers or the IT team, and explaining technical limits to the **production team**, the people who plan the studio's schedule and budget.
-- **Testing and documenting.** Checking tools in real production and keeping their documentation up to date.
+## Your result is someone else's ability to work
 
-Most days mix building and supporting. At [one meetup](https://pipedev.org/posts/2023-05-17-what-makes-a-pipeline-person/), pipeline developers estimated the split at about 60% development and 40% support, and said the balance changes with the production schedule. Deadlines are also shorter than in most other engineering roles at a studio, because a **show**, the film or series the studio is working on, can't wait.
+A pipeline TD writes and supports the tools that move work through a studio. If [the pipeline](vfx-pipeline.md) keeps handoffs usable, the TD helps people rely on those handoffs day to day.
 
-## One pipeline TD's view
+That includes scripts and plugins inside artists' applications, such as Maya for 3D, Houdini for effects, and Nuke for compositing. It also includes supporting artists directly: finding why files will not load, why a render failed, or why work cannot be published.
 
-In this section, the author of this course describes their own work as a pipeline TD at a small studio, interviewed for this guide. It is one person's experience, and other pipeline TDs may see the job differently.
+Virgil's first tool for compositing artists was a small server that let them run code inside Nuke directly from their text editor. He had worked in software development; helping those artists gradually became a pipeline job. Their work gave his programming a concrete purpose.
 
-**The route into the job.** The TD didn't start in VFX at all. They began in audio: live mixing at concerts, then sound for video. Video led to 3D, 3D led to a game engine and C++, and that led to modeling in Blender and writing Python scripts for it. Their computer was too slow for heavy rendering, so they practiced programming while they waited for a new one, and programming interested them more than anything else. The TD moved into software development, then into software architecture and design.
+Support also involves other people. A TD may need to turn an artist's complaint into a clear problem for software developers or IT, or explain a technical limit to the **production team**, which plans the studio's schedule and budget.
 
-Then the TD met compositing artists who wanted to learn programming. The first tool the TD built for them was a small server that let the artists run code inside Nuke directly from their text editor. Slowly, helping those artists turned into a pipeline job.
+The **show**, the film or series the studio is working on, has deadlines. Those deadlines affect which improvements can wait and which problems need attention now. At [one pipeline developers' meetup](https://pipedev.org/posts/2023-05-17-what-makes-a-pipeline-person/), participants described a changing balance between development and support. You should expect both responsibilities, rather than a fixed percentage of each.
 
-**Building a pipeline from nothing.** At their current studio, the TD built the whole pipeline from nothing: no existing tools or files, only an idea of what it had to do. The first step was not code. The TD sat down with the studio's supervisors and drew a mind map of how work should flow through the studio: ideas and branches, more brainstorming than design.
+## Adding code creates another responsibility
 
-Next came the decision the TD is proudest of. The TD wrote most of the code in-house instead of depending on third-party packages for everything. The TD also made the pipeline self-contained, so the studio never needs its IT team to update Python or the pipeline itself. "Best decision I ever made," the TD says. What the TD would do differently: release tools sooner and get feedback, instead of trying to make every detail perfect first.
+"Writing code to fix a problem is easy, because it's fun," Virgil says. The cost continues afterward: upgrades, changes, bug fixes, and the time someone needs to understand the tool.
 
-**An ordinary day has little code in it.** "Writing code to fix a problem is easy, because it's fun," the TD says. But every new piece of code is tied to other pieces, and it has a cost that appears later: in upgrades, changes, bug fixes, and the time someone needs to understand it. A good ordinary day is one where the TD helps a colleague think a problem through and they find a solution that needs no new feature at all.
+For him, a good day can mean helping a colleague think through a problem and finding a solution that needs no new feature. That judgment is part of maintaining a system people depend on.
 
-**Finding the need behind the request.** Artists, leads, and supervisors often don't have the words to describe a technical problem, and they can't see how the pipeline works inside. So they often believe that code can fix anything. The TD's job is to find the real problem without telling anyone "you don't know what you want." The TD's advice: respect the other person's point of view, and look into it seriously even when you think there is a better way. Someone who sees the work differently often has something to teach you. The Gantt chart at the top of this page is one example.
+When he built his studio's pipeline, he began by sitting down with supervisors and mapping how work should flow. Looking back, one thing he would change is releasing tools sooner and getting feedback, rather than trying to perfect every detail first.
 
-**When a client changes the rules.** Requirements can change in the middle of a show. For changes like these, the TD built a hook system: **hooks** are small pieces of code that the pipeline runs automatically at a chosen moment. The TD uses them in two separate ways.
+Testing and documentation serve the same responsibility. A tool has to work in the artist's production context, and someone has to explain it well enough for others to use and support it. Feedback reveals whether it solves the need you understood at the start.
 
-- **Installing what the machines won't allow.** In one recent case, a client required a new color-management library that was still unfinished, and the studio's machines didn't allow installing extra libraries. The TD used hooks to install the library through the pipeline itself.
-- **Updating work that has already started.** A change can reach hundreds of Nuke scripts (Nuke's project files, which artists are already working on) that all need the same metadata or export update. When a chosen event happens, a hook lets the VFX editor update those files afterward, without asking every artist to redo their work.
+## The work changes with the studio
 
-**What the TD wishes they had known.** "Pipeline is more about the people using the pipeline than the code itself. You are connecting people, not abstract interfaces of DCCs and databases." (A **DCC**, digital content creation application, is an artist's program such as Maya or Nuke.)
+In a small studio, one pipeline TD may design, build, install, document, and support most of the system. Virgil works this way. In a large studio, pipeline TDs, software developers, supervisors, and other technology staff may share those responsibilities.
 
-## How people get in
+This matters when you read a job description. The title alone does not tell you how much direct support, tool development, or responsibility for the overall system the position includes.
 
-Pipeline TD is rarely a first job. Most people start as an **assistant TD**, also called a junior pipeline TD. They come from two directions:
+| Role | Main focus |
+|---|---|
+| **Pipeline TD** | Tools and handoffs across departments, with direct artist support |
+| **Department TD**, such as an effects or lighting TD | Technical problems within one department, often including work seen on screen |
+| **Software developer (R&D)** | Core systems and new technology, often on longer projects with less direct artist support |
+| **IT** | Accounts, networks, storage, and machines |
 
-- **From art.** Artists with strong technical interests move into TD work. They already understand what artists need.
-- **From programming.** Computer science graduates and software developers join a studio and learn how a studio makes films while they work. Large studios accept either a computer science degree or equivalent industry experience.
+These are broad distinctions, not universal job boundaries. Studios also use *pipeline TD* and *pipeline developer* differently. Ask who uses the tools, who supports those users, and what part of the system the role owns.
 
-The TD above mixed both routes: audio and 3D first, then software development, then pipeline work. Practitioners disagree about which background makes better TDs. They agree that whichever side you come from, you have to learn the other.
+## Would this work suit you?
 
-## Roles that are easy to confuse
+The programming is substantial, but it comes with investigating another person's problem, communicating across roles, and maintaining tools through changes. Those responsibilities are worth considering alongside the technologies in a posting.
 
-"TD" is not one job. Studios use the title for very different roles, some close to art and some close to engineering. Three roles are often confused with pipeline TD:
+Artists who move into TD work bring knowledge of what artists need. Programmers bring software experience and have to learn how a studio makes its shots. Either route involves learning the other side of the work.
 
-| Role                                                        | What it does                                                                                   | How it differs from a pipeline TD                                                                       |
-| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Department TD (for example, an effects TD or a lighting TD) | Solves technical problems inside one department, and often creates work that appears on screen | Specializes in one department; a pipeline TD works across departments                                   |
-| Software developer (R&D)                                    | Builds core systems and new technology, often over months or years                             | Longer projects, less direct artist support, and employers more often require a computer science degree |
-| IT                                                          | Manages accounts, networks, storage, and machines                                              | Not pipeline work; giving one person both jobs often fails                                              |
+The postings and career profiles below mention Python, Linux, and tool development inside artist applications. They also mention interface libraries such as Qt and PySide, Git, testing, and production systems. Requirements vary by studio and seniority; use a particular posting to find out what that role expects. The linked ILM posting is one example, not a universal checklist.
 
-"Pipeline TD" and "pipeline developer" have no standard difference. Some studios use both names for one role, and others use them for two. The useful difference is how much direct artist support the job includes.
+If you enjoy understanding someone's work, building tools around it, and staying involved when those tools need support, these are reasons to explore the role further. Virgil describes what he wishes he had understood earlier:
 
-## The ladder and the size of the studio
+> "Pipeline is more about the people using the pipeline than the code itself. You are connecting people, not abstract interfaces of DCCs and databases."
 
-A common career path has five steps:
+Here, **DCC** means a digital content creation application, such as Maya or Nuke. The applications and databases are part of the system; the people using it give the work its purpose.
 
-1. Assistant TD.
-2. Pipeline TD.
-3. Senior or lead pipeline TD.
-4. **Pipeline supervisor**: manages the pipeline for one or more shows, and the pipeline TDs who work on them.
-5. **Head of pipeline**: manages the whole pipeline team, its plans, and its budget.
-
-In a large studio, the work is split across teams: pipeline TDs, supervisors, software developers, and people who design the overall system. At some large studios, a pipeline TD gets daily tasks from the show's **CG supervisor** (the person who leads the computer-graphics work on the show), while their manager sits in the technology department.
-
-In a small studio, one pipeline TD often designs, builds, installs, documents, and supports everything, including work that software developers would do in a large studio. The TD interviewed above works this way.
-
-## What studios ask for
-
-Job postings and career profiles list these skills:
-
-- **Required:** Python at an advanced level, Linux, building tools inside at least one artist application, and understanding how a film's visual effects are made, from filming to the finished shot.
-- **Expected:** Qt and PySide for artist interfaces; Git, code review, testing, and continuous integration; and clear communication with artists and the production team.
-- **Often a plus:**
-  - production tracking systems and databases;
-  - render farm software such as Deadline, which schedules rendering across many machines;
-  - USD;
-  - open-source VFX libraries such as OpenImageIO and OpenColorIO.
-- **C++ is useful, but not the first thing to learn.** Career profiles often list C++ as essential, but [studio job postings](https://www.entertainmentcareers.net/industrial-light-and-magic/pipeline-technical-director-level-i-expression-of-interest/job/415259) usually list it as a plus or leave it out. It probably matters more for software developer and department TD roles. For a pipeline TD job, Python comes first.
-
-## Why this course works the way it does
-
-This course is built for programmers who come into the job from the programming side. Its habits come from the work described above:
-
-- **Agree on the input and output first.** Each department relies on what the one before it promised, so every course tool starts from a written description of what it accepts and what it returns.
-- **Check before you trust.** A problem found late costs the most, so the course's tools check what arrives before anyone works on it, like the delivery check in [What a VFX pipeline is](vfx-pipeline.md).
-- **Never overwrite.** Versions let a studio return to earlier work and let departments agree on what they used.
-- **Write clear messages and exit codes.** The reader of an error message is often an artist, and sometimes another tool.
-- **Get a review before production.** A tool isn't finished when its author says so. Another TD tries it, and a lead TD decides whether it is ready. The course's peer reviews and lead TD reviews practice that step.
+The [course overview](../course-overview.md) describes one path for programmers who want to develop those skills.
 
 ## Further reading
 
-- ScreenSkills, [Pipeline technical director (TD)](https://www.screenskills.com/job-profiles/roles/pipeline-technical-director-td): the UK screen industry's career profile of the role, with links to related TD profiles.
-- Industrial Light & Magic, [Pipeline Technical Director, Level I](https://www.entertainmentcareers.net/industrial-light-and-magic/pipeline-technical-director-level-i-expression-of-interest/job/415259) (2023): a real entry-level posting from a large studio.
-- pipedev.org, [What Makes a Pipeline Person?](https://pipedev.org/posts/2023-05-17-what-makes-a-pipeline-person/) (2023): notes from a pipeline developers' meetup on the job, the development and support split, and career paths.
-- Lidia Martinez, [All about Technical Directors](https://blog.lidia-martinez.com/all-about-technical-directors-part-1): a former TD on why "TD" means so many different jobs.
+- ScreenSkills, [Pipeline technical director (TD)](https://www.screenskills.com/job-profiles/roles/pipeline-technical-director-td): the UK screen industry's career profile, with links to related TD roles.
+- Industrial Light & Magic, [Pipeline Technical Director, Level I](https://www.entertainmentcareers.net/industrial-light-and-magic/pipeline-technical-director-level-i-expression-of-interest/job/415259) (2023): one entry-level posting from a large studio; compare its requirements with the role you are considering.
+- pipedev.org, [What Makes a Pipeline Person?](https://pipedev.org/posts/2023-05-17-what-makes-a-pipeline-person/) (2023): practitioner discussion of development, support, and career paths.
+- Lidia Martinez, [All about Technical Directors](https://blog.lidia-martinez.com/all-about-technical-directors-part-1): a former TD on the different jobs that share the title.
 - Foundry, [What is a Technical Director? VFX roles explained](https://www.foundry.com/insights/technical-director-vfx-roles-explained) (2025): a pipeline TD describes their route and their work.
-- The Rookies, [Working as a Pipeline TD at DNEG](https://www.therookies.co/blog/careers/marieke) (2020): an interview with a pipeline TD at a large studio.
+- The Rookies, [Working as a Pipeline TD at DNEG](https://www.therookies.co/blog/careers/marieke) (2020): an account from a large studio to compare with Virgil's experience.

@@ -18,8 +18,8 @@ Do these once, in this order.
 
 ## Understand VFX work
 
-- [What a VFX pipeline is](guides/industry/vfx-pipeline.md): how one shot moves through a studio, and the code that moves it.
-- [What a pipeline TD does](guides/industry/pipeline-td.md): the job, how people get into it, and one pipeline TD's own account.
+- [What a VFX pipeline is](guides/industry/vfx-pipeline.md): why artists need reliable handoffs, and what pipeline code protects when a shot changes.
+- [What a pipeline TD does](guides/industry/pipeline-td.md): the responsibility for helping artists work, and how to judge whether the job suits you.
 
 ## Refresh your skills
 
