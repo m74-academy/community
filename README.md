@@ -16,6 +16,11 @@ Do these once, in this order.
 - [How the course works](guides/how-the-course-works.md): lessons, Core and Gold, labs, and the capstone.
 - [Read, edit, and check a lesson](guides/lesson-loop.md): the loop you repeat in every lesson.
 
+## Understand VFX work
+
+- [What a VFX pipeline is](guides/industry/vfx-pipeline.md): how one shot moves through a studio, and the code that moves it.
+- [What a pipeline TD does](guides/industry/pipeline-td.md): the job, how people get into it, and one pipeline TD's own account.
+
 ## Refresh your skills
 
 - [Refreshers for Python and Git](guides/refreshers.md)
