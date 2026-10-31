@@ -10,6 +10,8 @@ Do these once, in this order.
 2. [Set up a module](guides/fork-clone-setup.md): fork, clone, install the project, and fix the remotes of an existing clone.
 3. [Use VS Code for the course](guides/vscode-and-terminal.md): folders, terminals, and common problems.
 
+From Module 2, optional: [Nuke and VS Code](guides/nuke-and-vscode.md): start Nuke from VS Code and run course code inside it.
+
 ## Learn the course
 
 - [Course overview](guides/course-overview.md): what the Academy teaches and what each module builds.
