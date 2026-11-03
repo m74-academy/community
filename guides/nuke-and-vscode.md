@@ -45,12 +45,16 @@ Check it: Command Palette → **Nuke: Launch main executable**. A terminal named
 
 ## 4. Install `nukeserversocket`
 
-> **Not ready for Nuke 17 yet.** The current `nukeserversocket` is written for PySide2, and Nuke 16 and 17 ship PySide6, so its panel doesn't load. This step will be written when a release for Nuke 17 is out. Until then, use steps 1–3 and 5 and the [package case](#a-package-the-plugin-from-the-lesson), which work without it.
+Nuke 17 needs version 1.3.0 or newer. **Nuke: Add Packages** installs the latest release.
 
-<!-- Draft, for Virgil to confirm once the PySide6 release exists:
-1. Command Palette → **Nuke: Add Packages** → **Nuke Server Socket**. Nuke Tools copies it to `~/.nuke/NukeTools/` and adds two lines to `~/.nuke/menu.py` that load it every time Nuke opens its interface.
-2. **Nuke: Launch main executable**. In Nuke, open the nukeserversocket panel (which menu?) and click **Connect**.
--->
+1. Command Palette → **Nuke: Add Packages** → **Nuke Server Socket**. Nuke Tools copies the latest release to `~/.nuke/NukeTools/` and adds two lines to `~/.nuke/menu.py`, which load it every time Nuke opens its interface.
+2. **Nuke: Launch main executable**.
+3. In Nuke, click a pane's content menu, the checkered box at its upper-left corner, and choose **Windows → Custom → NukeServerSocket**.
+4. In the panel, click **Connect**.
+
+The server runs any code it receives, with no password, so it accepts code only from your own computer. Leave **Allow LAN Connections** off.
+
+The server closes after 60 minutes, or the **Server Timeout** you set. If you don't want to click **Connect** each time, turn on **Auto Start** in the panel's settings: the server then starts when the panel opens.
 
 ## 5. Install the stubs
 
@@ -117,7 +121,7 @@ To restart Nuke fast while you work on start-up code, set `"nukeTools.restartTer
 | You see                                                         | Means                                                  | Do                                                                                   |
 | --------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | **Nuke: Launch main executable** does nothing, or "not found"   | `nukeTools.executablePath` is missing or wrong         | Copy the full path from step 1 into your user settings                               |
-| **Run Code Inside Nuke** can't connect                          | Nuke isn't running, or its nukeserversocket isn't on   | Launch Nuke and click **Connect** in the nukeserversocket panel                      |
+| `Couldn't connect to nukeserversocket`                          | Nuke isn't running, or the server isn't on or timed out | Launch Nuke and click **Connect** in the nukeserversocket panel                      |
 | No menu entry, and no traceback in Nuke's terminal              | `NUKE_PATH` doesn't reach the plugin's `startup` folder | Fix the `NUKE_PATH` line, then close Nuke and launch it again                        |
 | `ModuleNotFoundError` in Nuke's terminal or the Output panel     | `PYTHONPATH` doesn't reach the package                  | Fix the `PYTHONPATH` line, then close Nuke and launch it again                       |
 | A change to an imported module doesn't show                     | Python imported it once and reuses it                  | Restart Nuke, or `importlib.reload` the module                                       |
