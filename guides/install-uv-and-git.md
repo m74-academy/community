@@ -107,7 +107,7 @@ It says you are logged in to github.com.
 uv tool install git+https://github.com/m74-academy/academy-cli
 ```
 
-If `uv` says its tool folder is not on your `PATH`, run `uv tool update-shell`, then open a new terminal.
+If `uv` says its tool folder is not on your `PATH`, run `uv tool update-shell`, then open a new terminal. On Windows, quit VS Code (**File → Exit**) and open it again.
 
 The same `academy` command works in every module; `academy update` keeps it and the course current.
 

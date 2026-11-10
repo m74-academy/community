@@ -42,6 +42,7 @@ Illustrated example; GitHub's layout may differ.
 
    ```console
    gh repo clone YOUR-USERNAME/module-0
+   cd module-0
    ```
 
    With Git alone, clone and add `upstream` yourself:
