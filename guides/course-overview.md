@@ -19,7 +19,7 @@ The five modules come one after another, and each capstone extends the same pipe
 | 4 — Delivery & Operations | A release of your pipeline tool | Launcher, configuration, packaging, CI, and a clean install on another machine |
 | 5 — AI Tooling | An AI-assisted tool | Tags or checks registered items through an AI service, with human approval |
 
-Modules 3 to 5 are in preparation; their details may change. If your earlier capstone is incomplete, each module offers a starter project, so you can continue.
+Modules 2 to 5 are in preparation; their details may change. If your earlier capstone is incomplete, each module offers a starter project, so you can continue.
 
 ## The idea that repeats
 
